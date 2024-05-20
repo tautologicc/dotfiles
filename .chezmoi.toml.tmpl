@@ -1,9 +1,12 @@
 umask = 0o22
 
 [data]
-email = "t@utologi.cc"
-name = "F. Emerson"
-user = "tautologicc"
+{{- $username := promptStringOnce . "username" "username" -}}
+{{- $name := promptStringOnce . "name" "name" -}}
+{{- $email := promptStringOnce . "email" "email" -}}
+email = {{ $email | quote }}
+name = {{ $name | quote }}
+username = {{ $username | quote }}
 
 [git]
 autoCommit = true
