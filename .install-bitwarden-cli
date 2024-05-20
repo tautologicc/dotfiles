@@ -1,0 +1,15 @@
+#!/bin/sh -eu
+
+[ "$(uname -s)" = Darwin ] || {
+	echo "unsupported os" >&2
+	exit 1
+}
+
+command -v brew >/dev/null || {
+	bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"	
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+}
+
+command -v bw >/dev/null || {
+	brew install bitwarden-cli
+}
