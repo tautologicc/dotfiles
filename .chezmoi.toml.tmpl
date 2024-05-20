@@ -1,9 +1,11 @@
-umask = 0o22
-
-[data]
 {{- $username := promptStringOnce . "username" "username" -}}
 {{- $name := promptStringOnce . "name" "name" -}}
 {{- $email := promptStringOnce . "email" "email" -}}
+
+umask = 0o22
+
+[data]
+[data.my]
 email = {{ $email | quote }}
 name = {{ $name | quote }}
 username = {{ $username | quote }}
