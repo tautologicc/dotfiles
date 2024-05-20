@@ -1,6 +1,8 @@
+umask = 0o22
+
 [git]
-    autoCommit = true
-    autoPush = true
+autoCommit = true
+autoPush = true
 
 [hooks.read-source-state.pre]
-    command = {{ joinPath .chezmoi.sourceDir ".install-bitwarden-cli" | quote }}
+command = {{ joinPath .chezmoi.sourceDir ".install-bitwarden-cli" | quote }}
