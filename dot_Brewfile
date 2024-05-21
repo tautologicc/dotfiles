@@ -4,6 +4,7 @@ brew "mas"
 
 cask "ableton-live-suite@11"
 cask "dash"
+cask "discretescroll"
 cask "disk-inventory-x"
 cask "firefox"
 cask "iina"
