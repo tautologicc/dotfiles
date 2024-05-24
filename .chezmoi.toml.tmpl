@@ -6,13 +6,13 @@ umask = 0o22
 
 [data]
 [data.my]
-email = {{ $email | quote }}
-name = {{ $name | quote }}
-username = {{ $username | quote }}
+    email = {{ $email | quote }}
+    name = {{ $name | quote }}
+    username = {{ $username | quote }}
 
 [git]
-autoCommit = true
-autoPush = true
+    autoCommit = true
+    autoPush = true
 
 [hooks.read-source-state.pre]
-command = {{ joinPath .chezmoi.sourceDir ".install-bitwarden-cli" | quote }}
+    command = {{ joinPath .chezmoi.sourceDir ".install-bitwarden-cli" | quote }}
