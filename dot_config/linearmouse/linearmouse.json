@@ -2,22 +2,25 @@
   "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5",
   "schemes" : [
     {
+      "pointer" : {
+        "acceleration" : 1.125,
+        "disableAcceleration" : true
+      },
       "if" : {
         "device" : {
-          "productName" : "Kensington Eagle Trackball",
-          "productID" : "0x2048",
           "vendorID" : "0x47d",
+          "productID" : "0x2048",
+          "productName" : "Kensington Eagle Trackball",
           "category" : "mouse"
         }
       },
       "scrolling" : {
-        "speed" : 0,
+        "distance" : {
+          "vertical" : 2,
+          "horizontal" : 1
+        },
         "acceleration" : 1,
-        "distance" : 1
-      },
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 1
+        "speed" : 0
       }
     }
   ]
