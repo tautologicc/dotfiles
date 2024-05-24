@@ -1,5 +1,6 @@
 brew "bitwarden-cli"
 brew "chezmoi"
+brew "languagetool"
 brew "mas"
 
 cask "ableton-live-suite@11"
