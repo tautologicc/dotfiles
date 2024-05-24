@@ -1,6 +1,5 @@
 brew "bitwarden-cli"
 brew "chezmoi"
-brew "languagetool"
 brew "mas"
 
 cask "ableton-live-suite@11"
@@ -9,6 +8,7 @@ cask "disk-inventory-x"
 cask "firefox"
 cask "iina"
 cask "ivpn"
+cask "languagetool"
 cask "linearmouse"
 cask "lulu"
 cask "parsec"
@@ -16,5 +16,4 @@ cask "zed"
 cask "zoom"
 
 mas "Bitwarden", id: 1352778147
-mas "LanguageTool", id: 1534275760
 mas "The Unarchiver", id: 425424353
