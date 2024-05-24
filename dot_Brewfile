@@ -12,8 +12,7 @@ cask "ivpn"
 cask "linearmouse"
 cask "lulu"
 cask "parsec"
-cask "sublime-merge"
-cask "sublime-text"
+cask "zed"
 cask "zoom"
 
 mas "Bitwarden", id: 1352778147
