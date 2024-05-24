@@ -16,4 +16,5 @@ cask "zed"
 cask "zoom"
 
 mas "Bitwarden", id: 1352778147
+mas "LanguageTool", id: 1534275760
 mas "The Unarchiver", id: 425424353
