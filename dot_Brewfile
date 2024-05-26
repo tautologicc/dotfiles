@@ -15,6 +15,7 @@ cask "parsec"
 cask "stremio"
 cask "sublime-merge"
 cask "sublime-text"
+cask "tev"
 cask "zoom"
 
 mas "Bitwarden", id: 1352778147
