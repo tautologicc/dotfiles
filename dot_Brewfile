@@ -1,6 +1,7 @@
 brew "bitwarden-cli"
 brew "chezmoi"
 brew "mas"
+brew "nushell"
 
 cask "ableton-live-suite@11"
 cask "dash"
