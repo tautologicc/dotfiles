@@ -95,6 +95,11 @@ $env.NU_PLUGIN_DIRS = [
 # path add ($env.CARGO_HOME | path join "bin")
 # path add ($env.HOME | path join ".local" "bin")
 # $env.PATH = ($env.PATH | uniq)
+$env.PATH = $env.PATH | split ron (char esep)
+    | prepend '/opt/homebrew/sbin'
+    | prepend '/opt/homebrew/bin'
+    | prepend ($env.HOME | path join '.local' 'bin')
+    | uniq
 
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
