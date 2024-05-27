@@ -1,0 +1,24 @@
+#!/bin/sh -eu
+
+! command -v bw >/dev/null || exit 0
+
+case "$(uname -sm)" in
+	'Darwin arm64')
+		test -x /opt/homebrew/bin/brew ||
+			curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh | bash
+		eval "$(/opt/homebrew/bin/brew shellenv)"
+		brew install bitwarden-cli
+	*)
+		printf 'unsupported OS\n' >&2
+		exit 1
+esac
+
+cat <<EOF
+
+Now unlock the Bitwarden vault before installing the dotfiles:
+
+     $ bw login \$BW_EMAIL
+     $ export BW_SESSION=\$(bw unlock --raw)
+     $ chezmoi apply
+
+EOF

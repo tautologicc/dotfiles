@@ -1,7 +1,7 @@
+brew "bitwarden-cli"
 brew "chezmoi"
 brew "mas"
 brew "oil"
-brew "rbw"
 
 cask "ableton-live-suite@11"
 cask "dash"
