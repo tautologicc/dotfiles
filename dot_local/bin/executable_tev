@@ -1,2 +1,2 @@
 #!/bin/sh
-exec '/Applications/tev.app/Contents/MacOS/tev' "$@"
+exec /Applications/tev.app/Contents/MacOS/tev "$@"

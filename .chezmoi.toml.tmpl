@@ -1,6 +1,6 @@
-{{- $username := promptStringOnce . "username" "username" -}}
-{{- $name := promptStringOnce . "name" "name" -}}
-{{- $email := promptStringOnce . "email" "email" -}}
+{{- $username := promptStringOnce .my "username" "username" -}}
+{{- $name := promptStringOnce .my "name" "name" -}}
+{{- $email := promptStringOnce .my "email" "email" -}}
 
 umask = 0o22
 

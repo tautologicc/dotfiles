@@ -15,10 +15,9 @@ esac
 
 cat <<EOF
 
-Now unlock the Bitwarden vault before installing the dotfiles:
+Unlock the Bitwarden vault before installing the dotfiles:
 
-     $ bw login \$BW_EMAIL
-     $ export BW_SESSION=\$(bw unlock --raw)
+     $ export BW_SESSION=\$(bw login \$BW_EMAIL --raw)
      $ chezmoi apply
 
 EOF
