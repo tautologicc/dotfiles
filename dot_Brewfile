@@ -1,5 +1,6 @@
 brew "bitwarden-cli"
 brew "chezmoi"
+brew "jq"
 brew "mas"
 brew "oil"
 
