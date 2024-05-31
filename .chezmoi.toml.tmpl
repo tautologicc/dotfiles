@@ -1,7 +1,7 @@
 {{- $name := promptStringOnce .my "name" "name" -}}
 {{- $email := promptStringOnce .my "email" "email" -}}
 {{- $username := promptStringOnce .my "username" "username" -}}
-{{- $hostname := promptStringOnce .my "hostname" "hostname" -}}   
+{{- $hostname := promptStringOnce .my "hostname" "hostname" .chezmoi.hostname -}}   
 
 umask = 0o22
 
