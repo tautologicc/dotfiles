@@ -1,0 +1,8 @@
+{{- if and (ne .my.hostname "") (ne .my.hostname .chezmoi.hostname) -}}
+{{- if and (eq .chezmoi.os "darwin") (eq .chezmoi.arch "arm64") -}}
+#!/bin/sh -eu
+sudo scutil --set ComputerName "{{ .my.hostname }}"
+sudo scutil --set LocalHostName "{{ .my.hostname }}"
+dscacheutil -flushcache
+{{ end -}}
+{{ end -}}

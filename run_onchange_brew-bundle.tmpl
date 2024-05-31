@@ -1,4 +1,6 @@
-#!/bin/sh
+{{- if and (eq .chezmoi.os "darwin") (eq .chezmoi.arch "arm64") -}}
+#!/bin/sh -eu
+eval "$(/opt/homebrew/bin/brew shellenv)"
 HOMEBREW_NO_AUTO_UPDATE=true brew bundle --global --no-lock --quiet
-
-# {{ include "dot_Brewfile" | sha256sum }}  .Brewfile
+# {{ include "dot_Brewfile" | sha256sum }}
+{{ end -}}
