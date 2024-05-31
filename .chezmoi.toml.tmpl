@@ -1,3 +1,4 @@
+{{- $hostname := promptStringOnce .my "hostname" "hostname" -}}   
 {{- $username := promptStringOnce .my "username" "username" -}}
 {{- $name := promptStringOnce .my "name" "name" -}}
 {{- $email := promptStringOnce .my "email" "email" -}}
@@ -8,6 +9,7 @@ umask = 0o22
 
 [data.my]
     email = {{ $email | quote }}
+    hostname = {{ $hostname | quote }}
     name = {{ $name | quote }}
     username = {{ $username | quote }}
 

@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# TODO: split into bootstrap+install
+
+set -eu
+
+# Ensure superuser privileges
+sudo -v
+
+# Set computer name
+host=$(scutil --get ComputerName | tr '[:upper:]' '[:lower:]' | sed -e 's/[^a-z0-9]//g')
+sudo scutil --set ComputerName "$host"
+sudo scutil --set HostName "$host"
+sudo scutil --set LocalHostName "$host"
+dscacheutil -flushcache
+
+# Install Homebrew
+command -v brew >/dev/null || {
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >>~/.zprofile
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+}
+
+# Install Rosetta 2
+softwareupdate --install-rosetta --agree-to-license
+
+# Install applications
+brew bundle -q
+
+# Install cron jobs
+crontab - <<EOF
+9 9 * * * $(command -v brew) upgrade >/dev/null
+EOF
+
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# ---
+
+echo "TODO: Ableton Live: Activate license"
+echo "TODO: LuLu: Continue installation"

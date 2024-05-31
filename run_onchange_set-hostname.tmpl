@@ -1,0 +1,10 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+set -eu
+
+hostname="{{ .my.hostname }}"
+test -n "$hostname" || exit 0
+sudo scutil --set ComputerName "$hostname"
+sudo scutil --set LocalHostName "$hostname"
+dscacheutil -flushcache
+{{ end -}}
