@@ -1,6 +1,7 @@
 brew "bitwarden-cli"
 brew "chezmoi"
 brew "clang-format"
+brew "helix"
 brew "jq"
 brew "mas"
 brew "oil"
