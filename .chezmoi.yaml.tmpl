@@ -1,0 +1,15 @@
+{{- $name := promptStringOnce . "my.name" "name" "F. Emerson" -}}
+{{- $email := promptStringOnce . "my.email" "email" "t@utologi.cc" -}}
+{{- $username := promptStringOnce . "my.username" "username" "tautologicc" -}}
+{{- $hostname := promptStringOnce . "my.hostname" "hostname" .chezmoi.hostname -}}   
+
+mask: 0o22
+data:
+  my:
+    email: "{{$email}}"
+    hostname: "{{$hostname}}"
+    name: "{{$name}}"
+    username: "{{$username}}"
+git:
+  autoCommit: true
+  autoPush: true
