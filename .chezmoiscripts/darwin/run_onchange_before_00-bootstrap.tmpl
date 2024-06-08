@@ -1,0 +1,37 @@
+#!/bin/sh
+sudo sh -eux <<SUDO
+
+scutil --set ComputerName {{ quote .my.hostname }}
+#scutil --set HostName {{ quote .my.hostname }}
+scutil --set LocalHostName {{ quote .my.hostname }}
+defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName {{ quote .my.hostname }}
+defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server ServerDescription {{ quote .my.hostname }}
+dscacheutil -flushcache
+
+{{ range $i, $lib := glob "/usr/lib/pam/pam_tid.so*" -}}
+{{- $cfg := "/etc/pam.d/sudo" -}}
+grep -q 'pam_tid\.so' {{$cfg}} ||
+		! head -n1 {{$cfg}} | grep -q '^# sudo: auth account password session$' || {
+	chmod u+w {{$cfg}}
+	ed -s {{$cfg}} <<EOF
+1a
+auth       sufficient     pam_tid.so
+.
+wq
+EOF
+	chmod u-w {{$cfg}}
+}
+{{-   break -}}
+{{- end }}
+
+{{ $homebrewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
+{{- $brew := joinPath $homebrewPath "bin/brew" -}}
+command -v brew >/dev/null ||
+		test -x {{$brew}} ||
+		curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh | bash
+
+{{ if eq .chezmoi.arch "arm64" -}}
+pgrep -q oahd || softwareupdate --install-rosetta --agree-to-license
+{{- end }}
+
+SUDO

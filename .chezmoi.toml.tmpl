@@ -16,6 +16,3 @@ umask = 0o22
 [git]
     autoCommit = true
     autoPush = true
-
-[hooks.read-source-state.pre]
-    command = {{ joinPath .chezmoi.sourceDir ".install-bw" | quote }}

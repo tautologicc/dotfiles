@@ -1,4 +1,0 @@
-{{- if and (eq .chezmoi.os "darwin") (eq .chezmoi.arch "arm64") -}}
-#!/bin/sh -eu
-softwareupdate --install-rosetta --agree-to-license
-{{ end -}}

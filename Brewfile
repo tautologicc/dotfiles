@@ -1,6 +1,5 @@
 brew "bitwarden-cli"
 brew "chezmoi"
-brew "clang-format"
 brew "jq"
 brew "mas"
 brew "oil"
@@ -16,13 +15,15 @@ cask "linearmouse"
 cask "little-snitch"
 cask "micro-snitch"
 cask "orion"
-cask "parsec"
 cask "plover"
 cask "stremio"
 cask "sublime-merge"
 cask "sublime-text"
 cask "tev"
-cask "zoom"
 
 mas "Bitwarden", id: 1352778147
 mas "The Unarchiver", id: 425424353
+
+# NOTE: Mover para um arquivo próprio. 
+cask "parsec"
+cask "zoom"

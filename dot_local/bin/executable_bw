@@ -1,2 +1,2 @@
 #!/bin/sh -eu
-NODE_OPTIONS='--no-deprecation' "$HOMEBREW_PREFIX"/bin/bw "$@"
+NODE_OPTIONS='--no-deprecation' exec "$HOMEBREW_PREFIX"/bin/bw "$@"
