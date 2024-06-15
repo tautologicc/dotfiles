@@ -1,0 +1,6 @@
+{:logseq-mia-theme {:version "v1.6.0", :repo "playerofgames/logseq-mia-theme", :effect false, :theme true}
+ :logseq-bullet-threading {:version "v1.1.4", :repo "pengx17/logseq-plugin-bullet-threading", :effect false, :theme false}
+ :logseq-move-block {:version "v0.1.0", :repo "vipzhicheng/logseq-plugin-move-block", :effect true, :theme false}
+ :logseq-calendars-plugin {:version "2.2.2", :repo "sawhney17/logseq-calendars-plugin", :effect true, :theme false}
+ :logseq-fenced-code-plus {:version "0.0.9", :repo "xyhp915/logseq-fenced-code-plus", :effect true, :theme false}
+ :logseq-vim-shortcuts {:version "v0.1.22", :repo "vipzhicheng/logseq-plugin-vim-shortcuts", :effect true, :theme false}}

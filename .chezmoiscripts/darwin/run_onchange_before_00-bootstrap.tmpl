@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo sh -eux <<SUDO
+exec sudo sh -eux <<SUDO
 
 scutil --set ComputerName "{{ .my.hostname }}"
 #scutil --set HostName "{{ .my.hostname }}"

@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eux
 
-sudo softwareupdate -i -a
+exec sudo softwareupdate -i -a
 
 # {{ now | date "02 January 2006" | sha256sum }} (Daily updates)
