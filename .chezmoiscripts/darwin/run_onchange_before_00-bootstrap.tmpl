@@ -1,12 +1,14 @@
 #!/bin/sh
 exec sudo sh -eux <<SUDO
 
-scutil --set ComputerName "{{ .my.hostname }}"
-#scutil --set HostName "{{ .my.hostname }}"
-scutil --set LocalHostName "{{ .my.hostname }}"
-defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName "{{ .my.hostname }}"
-defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server ServerDescription "{{ .my.hostname }}"
-dscacheutil -flushcache
+test "\$(hostname)" = "{{ .my.hostname }}" || {
+	scutil --set ComputerName "{{ .my.hostname }}"
+	#scutil --set HostName "{{ .my.hostname }}"
+	scutil --set LocalHostName "{{ .my.hostname }}"
+	defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName "{{ .my.hostname }}"
+	defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server ServerDescription "{{ .my.hostname }}"
+	dscacheutil -flushcache
+}
 
 {{ range $i, $lib := glob "/usr/lib/pam/pam_tid.so*" -}}
 {{- $cfg := "/etc/pam.d/sudo" -}}
