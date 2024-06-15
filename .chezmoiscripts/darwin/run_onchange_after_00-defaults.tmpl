@@ -1,5 +1,5 @@
-#!/bin/sh -eux
+#!/bin/sh
+set -eux
 
 osascript -e 'tell application "System Preferences" to quit'
-
 defaults write -g ApplePressAndHoldEnabled -bool false
