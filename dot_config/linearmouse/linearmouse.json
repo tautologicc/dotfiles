@@ -8,19 +8,34 @@
       },
       "if" : {
         "device" : {
-          "vendorID" : "0x47d",
-          "productID" : "0x2048",
           "productName" : "Kensington Eagle Trackball",
-          "category" : "mouse"
+          "vendorID" : "0x47d",
+          "category" : "mouse",
+          "productID" : "0x2048"
         }
       },
       "scrolling" : {
+        "speed" : 0,
         "distance" : {
           "vertical" : 2,
           "horizontal" : 1
         },
-        "acceleration" : 1,
-        "speed" : 0
+        "acceleration" : 1
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "productID" : "0x1020",
+          "category" : "mouse",
+          "vendorID" : "0x47d",
+          "productName" : "Kensington Expert Mouse"
+        }
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "horizontal" : 1
+        }
       }
     }
   ]
