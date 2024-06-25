@@ -1,6 +1,5 @@
 Brewfile
 TODO
-bootstrap
 
 .chezmoiscripts/*
 !.chezmoiscripts/{{ .chezmoi.os }}/*
