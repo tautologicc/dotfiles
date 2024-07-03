@@ -1,19 +1,19 @@
 #!/bin/sh
-exec sudo sh -eux <<SUDO
+exec sudo sh -eux <<"SUDO"
 
-test "\$(hostname)" = "{{ .my.hostname }}" || {
-	scutil --set ComputerName "{{ .my.hostname }}"
-	#scutil --set HostName "{{ .my.hostname }}"
-	scutil --set LocalHostName "{{ .my.hostname }}"
-	defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName "{{ .my.hostname }}"
-	defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server ServerDescription "{{ .my.hostname }}"
+{{ $hostname := quote .my.hostname }}
+test "$(hostname)" = {{ $hostname }} || {
+	scutil --set ComputerName {{ $hostname }}
+	#scutil --set HostName {{ $hostname }}
+	scutil --set LocalHostName {{ $hostname }}
+	defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName {{ $hostname }}
+	defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server ServerDescription {{ $hostname }}
 	dscacheutil -flushcache
 }
 
 {{ range $i, $lib := glob "/usr/lib/pam/pam_tid.so*" -}}
-{{- $cfg := "/etc/pam.d/sudo" -}}
-grep -q 'pam_tid\\.so' {{ $cfg }} ||
-		! head -n1 {{ $cfg }} | grep -q '^# sudo: auth account password session$' || {
+{{- $cfg := quote "/etc/pam.d/sudo" -}}
+grep -q pam_tid\.so {{ $cfg }} || ! head -n1 {{ $cfg }} | grep -q '^# sudo: auth account password session$' || {
 	chmod u+w {{ $cfg }}
 	ed -s {{ $cfg }} <<EOF
 1a
@@ -27,7 +27,7 @@ EOF
 {{- end }}
 
 {{ $homebrewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
-{{- $brew := joinPath $homebrewPath "bin/brew" -}}
+{{- $brew := joinPath $homebrewPath "bin" "brew" | quote -}}
 command -v brew >/dev/null ||
 		test -x {{ $brew }} ||
 		curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh | bash
