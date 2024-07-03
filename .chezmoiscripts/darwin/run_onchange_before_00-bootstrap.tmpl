@@ -2,7 +2,7 @@
 exec sudo sh -eux <<"SUDO"
 
 {{ $hostname := quote .my.hostname }}
-test "$(hostname)" = {{ $hostname }} || {
+[ "$(hostname)" = {{ $hostname }} ] || {
 	scutil --set ComputerName {{ $hostname }}
 	#scutil --set HostName {{ $hostname }}
 	scutil --set LocalHostName {{ $hostname }}
@@ -26,10 +26,9 @@ EOF
 {{-   break -}}
 {{- end }}
 
-{{ $homebrewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
-{{- $brew := joinPath $homebrewPath "bin" "brew" | quote -}}
-command -v brew >/dev/null ||
-		test -x {{ $brew }} ||
+{{ $brewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
+{{- $brew := joinPath $brewPath "bin/brew" | quote -}}
+command -v brew >/dev/null || [ -x {{ $brew }} ] ||
 		curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh | bash
 
 {{ if eq .chezmoi.arch "arm64" -}}
