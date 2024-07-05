@@ -4,6 +4,13 @@ darwin:
   defaults:
     NSGlobalDomain:
       ApplePressAndHoldEnabled: false
+    com.apple.TextEdit:
+      RichText: false
+      SmartQuotes: false
+    com.apple.TimeMachine:
+      DoNotOfferNewDisksForBackup: true
+    com.apple.appleseed.FeedbackAssistance:
+      Autogather: false
     com.apple.dock:
       autohide: true
       autohide-delay: 0.2
@@ -24,3 +31,12 @@ darwin:
   nvram:
     # Disable sound effects on boot.
     SystemAudioVolume: " "
+
+  # TODO(ttlgcc): I don't like the "killall" name -
+  #  we're also killing applications before setting defaults.
+  #  Come out with a different convention.
+  killall:
+    - Dock
+    - Finder
+    - SystemUIServer
+    - TextEdit

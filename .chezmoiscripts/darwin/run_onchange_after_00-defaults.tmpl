@@ -13,11 +13,13 @@ sudo nvram
 {{ range $domain, $keys := .darwin.defaults -}}
 {{- 	$defaults := hasPrefix "/" $domain | ternary "sudo defaults" "defaults" -}}
 {{- 	range $key, $value := $keys -}}
-{{- 		$type := printf "%T" $value | trimSuffix "64" -}}
+{{- 		$type := kindOf $value | trimSuffix "64" -}}
 {{$defaults}} write {{$domain | quote}} {{$key | quote}} -{{$type}} {{$value | quote}}
 {{ 	end -}}
 {{- end }}
 
-killall Dock
-killall Finder
-killall SystemUIServer
+killall
+{{- range .darwin.killall -}}
+{{- 	" " -}}
+{{- 	quote . -}}
+{{- end }}
