@@ -1,5 +1,22 @@
 #!/bin/sh
 set -eux
 
+# NOTE(ttlgcc): Kill the Settings app so it doesn't overwrite our preferences.
 osascript -e 'tell application "System Preferences" to quit'
-defaults write -g ApplePressAndHoldEnabled -bool false
+
+sudo nvram
+{{- range $key, $value := .darwin.nvram -}}
+{{- 	" " -}}
+{{- 	list $key $value | join "=" | quote -}}
+{{- end }}
+
+{{ range $domain, $keys := .darwin.defaults -}}
+{{- 	$defaults := hasPrefix "/" $domain | ternary "sudo defaults" "defaults" -}}
+{{- 	range $key, $value := $keys -}}
+{{- 		$type := printf "%T" $value | trimSuffix "64" -}}
+{{$defaults}} write {{$domain | quote}} {{$key | quote}} -{{$type}} {{$value | quote}}
+{{ 	end -}}
+{{- end }}
+
+killall Dock
+killall SystemUIServer

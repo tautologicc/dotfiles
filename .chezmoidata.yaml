@@ -1,0 +1,26 @@
+# TODO(ttlgcc): Support arrays.
+darwin:
+  # https://macos-defaults.com/
+  defaults:
+    NSGlobalDomain:
+      ApplePressAndHoldEnabled: false
+    com.apple.dock:
+      autohide: true
+      autohide-delay: 0.2
+      autohide-time-modifier: 0.5
+      mineffect: scale
+      orientation: bottom
+      scroll-to-open: false
+      show-recents: true
+      static-only: false
+      tilesize: 48
+    com.apple.screencapture:
+      disable-shadow: false
+      include-date: true
+      location: $HOME/Desktop
+      show-thumbnail: true
+      type: png
+
+  nvram:
+    # Disable sound effects on boot.
+    SystemAudioVolume: " "
