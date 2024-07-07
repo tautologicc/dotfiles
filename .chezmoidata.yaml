@@ -1,42 +1,134 @@
+---
 # TODO(ttlgcc): Support arrays.
 darwin:
-  # https://macos-defaults.com/
+  # For more information, see:
+  # - https://macos-defaults.com/
+  # - https://mths.be/macos
   defaults:
     NSGlobalDomain:
+      AppleKeyboardUIMode: 3
+      #AppleLanguages: ["en"]
+      #AppleLocale: "en_BR"????
+      AppleMeasurementUnits: Centimeters
+      AppleMetricUnits: true
       ApplePressAndHoldEnabled: false
+      AppleShowAllExtensions: true
+      AppleShowAllFiles: true
+      AppleShowScrollBars: Always
+      AppleSpacesSwitchOnActivate: true
+      InitialKeyRepeat: 10
+      KeyRepeat: 1
+      NSAutomaticCapitalizationEnabled: false
+      NSAutomaticDashSubstitutionEnabled: false
+      NSAutomaticPeriodSubstitutionEnabled: false
+      NSAutomaticQuoteSubstitutionEnabled: false
+      NSAutomaticSpellingCorrectionEnabled: false
+      NSCloseAlwaysConfirmsChanges: true
+      NSDisableAutomaticTermination: true
+      NSDocumentSaveNewDocumentsToCloud: false
+      NSNavPanelExpandedStateForSaveMode: true
+      NSNavPanelExpandedStateForSaveMode2: true
+      NSScrollAnimationEnabled: true
+      NSTableViewDefaultSizeMode: 2
+      NSTextShowsControlCharacters: true
+      NSToolbarTitleViewRolloverDelay: 0.0
+      NSUseAnimatedFocusRing: false
+      NSWindowResizeTime: 0.001
+      PMPrintingExpandedStateForPrint: true
+      PMPrintingExpandedStateForPrint2: true
+      com.apple.keyboard.fnState: false
+      com.apple.mouse.linear: true
+      com.apple.mouse.scaling: 1.0
+      com.apple.swipescrolldirection: true # TODO(ttlgcc): Show we disable natural scrolling?
+    com.apple.ActivityMonitor:
+      IconType: 0 # Show the app's regular icon.
+      UpdatePeriod: 1
+    com.apple.AppleMultitouchTrackpad:
+      DragLock: false
+      Dragging: false
+      TrackpadThreeFingerDrag: false
+      FirstClickThreshold: 1
+    com.apple.BluetoothAudioAgent:
+      Apple Bitpool Min (editable): 40
+    com.apple.CrashReporter:
+      DialogType: none
+    com.apple.HIToolbox:
+      AppleFnUsageType: 2 # Show Emoji & Symbols
+    com.apple.LaunchServices:
+      LSQuarantine: false
+    com.apple.Safari:
+      ShowFullURLInSmartSearchField: false
+    com.apple.MobileSMS:
+      MMSShowSubject: false
+    com.apple.Music:
+      userWantsPlaybackNotifications: false
+    com.apple.Terminal:
+      FocusFollowsMouse: false
     com.apple.TextEdit:
       RichText: false
       SmartQuotes: false
     com.apple.TimeMachine:
       DoNotOfferNewDisksForBackup: true
-    com.apple.appleseed.FeedbackAssistance:
+    com.apple.appleseed.FeedbackAssistant:
       Autogather: false
     com.apple.dock:
       autohide: true
-      autohide-delay: 0.2
+      autohide-delay: 0.0
       autohide-time-modifier: 0.5
+      enable-spring-load-actions-on-all-items: false
+      expose-group-apps: true
       mineffect: scale
+      mru-spaces: true
       orientation: bottom
       scroll-to-open: false
       show-recents: true
-      static-only: false
+      static-only: true
       tilesize: 48
+    com.apple.finder:
+      _FXSortFoldersFirst: true
+      _FXSortFoldersFirstOnDesktop: true
+      CreateDesktop: true
+      FXDefaultSearchScope: SCcf
+      FXEnableExtensionChangeWarning: false
+      FXPreferredViewStyle: Nlsv
+      FXRemoveOldTrashItems: true
+      QuitMenuItem: false
+      ShowExternalHardDrivesOnDesktop: true
+      ShowHardDrivesOnDesktop: false
+      ShowMountedServersOnDesktop: true
+      ShowPathbar: false
+      ShowRemovableMediaOnDesktop: true
+    com.apple.helpviewer:
+      DevMode: true
+    com.apple.menuextra.clock:
+      DateFormat: \"EEE d MMM HH:mm"
+      FlashDateSeparators: false
+    com.apple.print.PrintingPrefs:
+      Quit When Finished: true
     com.apple.screencapture:
-      disable-shadow: false
+      disable-shadow: true
       include-date: true
       location: $HOME/Desktop
       show-thumbnail: true
       type: png
+    com.apple.spaces:
+      spans-displays: true
+    com.apple.systempreferences:
+      NSQuitAlwaysKeepsWindows: false
+    com.apple.universalaccess:
+      reduceTransparency: true
+      showWindowTitlebarIcons: false
+    /Library/Preferences/com.apple.loginwindow:
+      AdminHostInfo: HostName
 
-  nvram:
-    # Disable sound effects on boot.
-    SystemAudioVolume: " "
-
-  # TODO(ttlgcc): I don't like the "killall" name -
-  #  we're also killing applications before setting defaults.
-  #  Come out with a different convention.
   killall:
+    - Activity Monitor
     - Dock
     - Finder
     - SystemUIServer
+    #- Terminal
     - TextEdit
+
+  nvram:
+    SystemAudioVolume: " "
+
