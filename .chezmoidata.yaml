@@ -1,6 +1,9 @@
 ---
 # TODO(ttlgcc): Support arrays.
 darwin:
+  nvram:
+    StartupMute: "%00"
+
   # For more information, see:
   # - https://macos-defaults.com/
   # - https://mths.be/macos
@@ -39,7 +42,7 @@ darwin:
       com.apple.keyboard.fnState: false
       com.apple.mouse.linear: true
       com.apple.mouse.scaling: 1.0
-      com.apple.swipescrolldirection: true # TODO(ttlgcc): Show we disable natural scrolling?
+      com.apple.swipescrolldirection: true # TODO(ttlgcc): Should we disable natural scrolling?
     com.apple.ActivityMonitor:
       IconType: 0 # Show the app's regular icon.
       UpdatePeriod: 1
@@ -101,7 +104,7 @@ darwin:
     com.apple.helpviewer:
       DevMode: true
     com.apple.menuextra.clock:
-      DateFormat: \"EEE d MMM HH:mm"
+      DateFormat: '"EEE d MMM HH:mm"'
       FlashDateSeparators: false
     com.apple.print.PrintingPrefs:
       Quit When Finished: true
@@ -128,7 +131,4 @@ darwin:
     - SystemUIServer
     #- Terminal
     - TextEdit
-
-  nvram:
-    SystemAudioVolume: " "
 
