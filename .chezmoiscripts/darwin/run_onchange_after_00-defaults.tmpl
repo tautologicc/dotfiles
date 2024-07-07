@@ -4,22 +4,27 @@ set -eux
 osascript -e 'tell application "System Preferences" to quit'
 
 sudo nvram
-{{- range $key, $value := .darwin.nvram -}}
-{{- 	" " -}}
-{{- 	list $key $value | join "=" | quote -}}
-{{- end }}
+{{- range $key, $val := .darwin.nvram}}
+{{- 	" "}}
+{{- 	list $key $val | join "=" | quote}}
+{{- end}}
 
-# TODO(ttlgcc): Support arrays.
-{{ range $domain, $keys := .darwin.defaults -}}
-{{- 	$defaults := hasPrefix "/" $domain | ternary "sudo defaults" "defaults" -}}
-{{- 	range $key, $value := $keys -}}
-{{- 		$type := kindOf $value | trimSuffix "64" -}}
-{{$defaults}} write {{$domain | quote}} {{$key | quote}} -{{$type}} {{$value | quote}}
-{{ 	end -}}
-{{- end }}
+{{- range $domain, $keys := .darwin.defaults}}
+{{- 	$defaults := hasPrefix "/" $domain | ternary "sudo defaults" "defaults" }}
+{{- 	range $key, $val := $keys}}
+{{- 		$type := kindOf $val | trimSuffix "64"}}
+{{- 		if eq $type "slice"}}
+{{- 			$type = "array"}}
+{{-		else}}
+{{- 			$val = list $val}}
+{{- 		end}}
+{{$defaults}} write {{quote $domain}} {{quote $key}} -{{$type}}
+{{- 		range $val}} {{quote .}}{{end}}
+{{- 	end}}
+{{- end}}
 
 killall
-{{- range .darwin.killall -}}
-{{- 	" " -}}
-{{- 	quote . -}}
-{{- end }}
+{{- range .darwin.killall}}
+{{- 	" "}}
+{{- 	quote .}}
+{{- end}}
