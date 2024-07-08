@@ -1,4 +1,5 @@
-TODO
+README*
+TODO*
 
 .chezmoiscripts/*
 !.chezmoiscripts/{{.chezmoi.os}}/*

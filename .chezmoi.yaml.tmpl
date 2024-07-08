@@ -6,10 +6,10 @@
 mask: 0o22
 data:
   my:
-    email: {{$email | quote}}
-    hostname: {{$hostname | quote}}
-    name: {{$name | quote}}
-    username: {{$username | quote}}
+    email: {{quote $email}}
+    hostname: {{quote $hostname}}
+    name: {{quote $name}}
+    username: {{quote $username}}
 git:
   autoCommit: true
   autoPush: true

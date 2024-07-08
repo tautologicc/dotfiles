@@ -12,11 +12,13 @@ darwin:
   #   - https://mths.be/macos
   #   - https://github.com/joeyhoer/starter
   defaults:
+    /Library/Preferences/com.apple.loginwindow:
+      AdminHostInfo: HostName
     NSGlobalDomain:
       AppleActionOnDoubleClick: Maximize
       AppleEnableMenuBarTransparency: false
       AppleEnableMouseSwipeNavigateWithScrolls: false
-      AppleKeyboardUIMode: 3 # NOTE(ttlgcc): Enable full keyboard access for all controls.
+      AppleKeyboardUIMode: 3 # Full keyboard access for all controls.
       AppleLanguages:
         - en-US
         - pt-BR
@@ -33,7 +35,7 @@ darwin:
       CGDisableCursorLocationMagnification: false
       InitialKeyRepeat: 10
       KeyRepeat: 2
-      NSAppSleepDisabled: false # TODO(ttlgcc): What does App Nap really do?
+      NSAppSleepDisabled: false
       NSAutomaticCapitalizationEnabled: false
       NSAutomaticDashSubstitutionEnabled: false
       NSAutomaticPeriodSubstitutionEnabled: false
@@ -46,7 +48,7 @@ darwin:
       NSNavPanelExpandedStateForSaveMode: true
       NSNavPanelExpandedStateForSaveMode2: true
       NSScrollAnimationEnabled: true
-      NSSpellCheckerAutomaticallyIdentifierLanguages: true
+      NSSpellCheckerAutomaticallyIdentifiesLanguages: true
       NSTableViewDefaultSizeMode: 2
       NSTextShowsControlCharacters: true
       NSToolbarTitleViewRolloverDelay: 0.0
@@ -65,8 +67,8 @@ darwin:
       com.apple.springing.delay: 0.0
       com.apple.swipescrolldirection: false
     com.apple.ActivityMonitor:
-      IconType: 0 # NOTE(ttlgcc): Show the app's regular icon.
-      UpdatePeriod: 1
+      IconType: 0 # App's regular icon.
+      UpdatePeriod: 5
     com.apple.AppleMultitouchTrackpad:
       DragLock: false
       Dragging: false
@@ -81,7 +83,7 @@ darwin:
     com.apple.CrashReporter:
       DialogType: none
     com.apple.HIToolbox:
-      AppleFnUsageType: 2 # NOTE(ttlgcc): Show Emoji & Symbols modal.
+      AppleFnUsageType: 2 # Show emoji & symbols modal.
     com.apple.LaunchServices:
       LSQuarantine: false
     com.apple.Safari:
@@ -96,7 +98,7 @@ darwin:
       RichText: false
       SmartQuotes: false
     com.apple.TimeMachine:
-      AutoBackup: false
+      AutoBackup: true
       DoNotOfferNewDisksForBackup: true
     com.apple.appleseed.FeedbackAssistant:
       Autogather: false
@@ -119,9 +121,9 @@ darwin:
       _FXSortFoldersFirst: true
       _FXSortFoldersFirstOnDesktop: true
       CreateDesktop: true
-      FXDefaultSearchScope: SCcf
+      FXDefaultSearchScope: SCcf # Current folder.
       FXEnableExtensionChangeWarning: false
-      FXPreferredViewStyle: Nlsv
+      FXPreferredViewStyle: Nlsv # List view.
       FXRemoveOldTrashItems: true
       QuitMenuItem: false
       ShowExternalHardDrivesOnDesktop: true
@@ -150,16 +152,14 @@ darwin:
       com.apple.sound.uiaudio.enabled: false
     com.apple.universalaccess:
       HIDScrollZoomModifierMask: 262144
-      closeViewPressOnReleaseOff: false
+      closeViewPressOnReleaseOff: true
       closeViewScrollWheelToggle: true
       closeViewSmoothImages: false
       closeViewZoomFollowsFocus: true
-      closeViewZoomMode: 1 # NOTE(ttlgcc): Picture-in-picture.
+      closeViewZoomMode: 1 # Picture-in-picture.
       increaseContrast: false
       reduceTransparency: true
       showWindowTitlebarIcons: false
-    /Library/Preferences/com.apple.loginwindow:
-      AdminHostInfo: HostName
 
   killall:
     - Activity Monitor
