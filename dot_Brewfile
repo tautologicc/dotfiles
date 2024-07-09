@@ -3,6 +3,7 @@ brew "chezmoi"
 brew "jq"
 brew "mas"
 brew "oil"
+brew "tree"
 
 cask "ableton-live-suite@11"
 cask "dash"
