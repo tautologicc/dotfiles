@@ -1,9 +1,15 @@
 #!/bin/sh
 set -eux
 
-{{ $homebrewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
+export HOMEBREW_NO_ENV_HINTS=true
+{{- $homebrewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local"}}
 command -v brew >/dev/null || eval "$({{$homebrewPath}}/bin/brew shellenv)"
-HOMEBREW_NO_ENV_HINTS=true brew bundle --no-lock --quiet --file={{ joinPath .chezmoi.sourceDir "dot_Brewfile" }}
+
+brew bundle --no-lock --quiet
+{{- if joinPath .chezmoi.homeDir ".Brewfile" | stat }} --global
+{{- else }} --file={{joinPath .chezmoi.sourceDir "dot_Brewfile"}}
+{{- end}}
+
 mas upgrade
 
 # {{ include "dot_Brewfile" | cat (now | date "02 January 2006") | sha256sum }}

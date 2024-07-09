@@ -1,4 +1,0 @@
-{
-	// TODO(ttlgcc): Change base path according to .chezmoi.os.
-	"system_binary": "/opt/homebrew/opt/llvm/bin/clangd",
-}

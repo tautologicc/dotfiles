@@ -1,6 +1,7 @@
 brew "bitwarden-cli"
 brew "chezmoi"
 brew "jq"
+brew "llvm"
 brew "mas"
 brew "oil"
 brew "tree"

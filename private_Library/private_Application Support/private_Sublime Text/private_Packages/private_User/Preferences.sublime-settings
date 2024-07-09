@@ -1,16 +1,19 @@
 {
+	"color_scheme": "auto",
+	"dark_color_scheme": "Alabaster Dark.sublime-color-scheme",
+	"dark_theme": "Default Dark.sublime-theme",
+	"default_encoding": "UTF-8",
+	"default_line_encoding": "unix",
+	"draw_centered": true,
+	"draw_white_space": ["isolated_mixed", "leading_mixed", "trailing"],
 	"ignored_packages":
 	[
 		"Vintage",
 	],
+	"index_files": true,
+	"light_color_scheme": "Alabaster.sublime-color-scheme",
+	"light_theme": "Default.sublime-theme",
 	"lsp_format_on_save": true,
 	"neovintageous_build_version": 13200,
-	"index_files": true,
-	"color_scheme": "auto",
-	"dark_theme": "Default Dark.sublime-theme",
-	"light_theme": "Default.sublime-theme",
 	"theme": "auto",
-	"dark_color_scheme": "Alabaster Dark.sublime-color-scheme",
-	"light_color_scheme": "Alabaster.sublime-color-scheme",
-	"draw_centered": true,
 }
