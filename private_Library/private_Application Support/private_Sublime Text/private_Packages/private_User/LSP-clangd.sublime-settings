@@ -1,4 +1,4 @@
-// Settings in here override those in "LSP-clangd/LSP-clangd.sublime-settings"
 {
+	// TODO(ttlgcc): Change base path according to .chezmoi.os.
 	"system_binary": "/opt/homebrew/opt/llvm/bin/clangd",
 }
