@@ -1,0 +1,16 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alabaster Color Scheme",
+		"EditorConfig",
+		"LSP",
+		"LSP-clangd",
+		"NeoVintageous",
+		"Package Control",
+		"Terminus",
+	],
+}
