@@ -18,6 +18,7 @@ darwin:
       AppleActionOnDoubleClick: Maximize
       AppleEnableMenuBarTransparency: false
       AppleEnableMouseSwipeNavigateWithScrolls: false
+      AppleHighlightColor: "0.212312 0.591682 0.908789"
       AppleKeyboardUIMode: 3 # Full keyboard access for all controls.
       AppleLanguages:
         - en-US
@@ -151,7 +152,7 @@ darwin:
     com.apple.systemsound:
       com.apple.sound.uiaudio.enabled: false
     com.apple.universalaccess:
-      HIDScrollZoomModifierMask: 262144
+      HIDScrollZoomModifierMask: 262144 # TODO(fmrsn): Explain what this mask means.
       closeViewPressOnReleaseOff: true
       closeViewScrollWheelToggle: true
       closeViewSmoothImages: false
@@ -166,6 +167,6 @@ darwin:
     - Dock
     - Finder
     - SystemUIServer
-    #- Terminal # NOTE(ttlgcc): We might be running chezmoi on a terminal, so don't kill it yet.
+    #- Terminal # NOTE(ttlgcc): chezmoi might be running on a terminal, so don't kill it.
     - TextEdit
 
