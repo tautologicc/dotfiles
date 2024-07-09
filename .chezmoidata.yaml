@@ -145,7 +145,7 @@ darwin:
       show-thumbnail: true
       type: png
     com.apple.spaces:
-      spans-displays: true
+      spans-displays: false
     com.apple.systempreferences:
       NSQuitAlwaysKeepsWindows: true
     com.apple.systemsound:
