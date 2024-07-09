@@ -6,11 +6,16 @@
 	"installed_packages":
 	[
 		"Alabaster Color Scheme",
+		"ApplySyntax",
 		"EditorConfig",
 		"LSP",
 		"LSP-clangd",
+		"MarkdownEditing",
 		"NeoVintageous",
 		"Package Control",
+		"Profile Switcher",
+		"SideBarEnhancements",
 		"Terminus",
+		"Writer Color Scheme",
 	],
 }
