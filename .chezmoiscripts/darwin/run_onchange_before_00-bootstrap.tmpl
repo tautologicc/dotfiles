@@ -1,39 +1,36 @@
 #!/bin/sh
-exec sudo sh -eux <<"SUDO"
 
-{{ $hostname := quote .my.hostname -}}
+{{- $hostname := quote .my.hostname}}
 [ "$(hostname)" = {{$hostname}} ] || {
-	scutil --set ComputerName {{$hostname}}
-	#scutil --set HostName {{$hostname}}
-	scutil --set LocalHostName {{$hostname}}
-	defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName {{$hostname}}
-	defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server ServerDescription {{$hostname}}
+	sudo scutil --set ComputerName {{$hostname}}
+	#sudo scutil --set HostName {{$hostname}}
+	sudo scutil --set LocalHostName {{$hostname}}
+	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName {{$hostname}}
+	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server ServerDescription {{$hostname}}
 	dscacheutil -flushcache
 }
 
-{{ range $i, $lib := glob "/usr/lib/pam/pam_tid.so*" -}}
-{{- $cfg := quote "/etc/pam.d/sudo" -}}
+{{- range $i, $lib := glob "/usr/lib/pam/pam_tid.so*"}}
+{{- 	$cfg := quote "/etc/pam.d/sudo"}}
 grep -q pam_tid\.so {{$cfg}} || ! head -n1 {{$cfg}} | grep -q '^# sudo: auth account password session$' || {
-	chmod u+w {{$cfg}}
-	ed -s {{$cfg}} <<EOF
+	sudo chmod u+w {{$cfg}}
+	sudo ed -s {{$cfg}} <<EOF
 1a
 auth       sufficient     pam_tid.so
 .
 wq
 EOF
-	chmod u-w {{$cfg}}
+	sudo chmod u-w {{$cfg}}
 }
-{{-   break -}}
-{{- end }}
+{{- 	break}}
+{{- end}}
 
-{{ $brewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
-{{- $brew := joinPath $brewPath "bin/brew" | quote -}}
+{{- $brewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local"}}
+{{- $brew := joinPath $brewPath "bin/brew" | quote}}
 command -v brew >/dev/null || test -x {{$brew}} || {
 	curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh | bash
 }
 
-{{ if eq .chezmoi.arch "arm64" -}}
+{{- if eq .chezmoi.arch "arm64"}}
 pgrep -q oahd || softwareupdate --install-rosetta --agree-to-license
-{{- end }}
-
-SUDO
+{{- end}}
