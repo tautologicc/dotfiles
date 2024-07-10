@@ -1,13 +1,4 @@
-{{- if joinPath .chezmoi.homeDir ".Brewfile" | stat | not -}}
-#!/bin/sh
-set -eux
-
-{{-	$brewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local"}}
-{{-	$brew := joinPath $brewPath "bin/brew"}}
-command -v brew >/dev/null || eval "$({{$brew}} shellenv)"
-
-{{- 	$brewFile := .chezmoi.sourceDir "dot_Brewfile" | printf "--file=%q" }}
-HOMEBREW_NO_ENV_HINTS=1 {{$brew}} bundle --no-lock --quiet {{$brewFile}}
-
-mas upgrade
+{{- if joinPath .chezmoi.homeDir ".Brewfile" | stat | not}}
+{{- 	$brewFile := joinPath .chezmoi.sourceDir "dot_Brewfile" | printf "--file=%q"}}
+{{- 	includeTemplate "brew-bundle.tmpl" $brewFile}}
 {{- end}}
