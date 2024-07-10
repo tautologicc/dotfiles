@@ -1,4 +1,5 @@
 #!/bin/sh
+set -eux
 
 {{- $hostname := quote .my.hostname}}
 [ "$(hostname)" = {{$hostname}} ] || {
@@ -30,7 +31,3 @@ EOF
 command -v brew >/dev/null || test -x {{$brew}} || {
 	curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh | bash
 }
-
-{{- if eq .chezmoi.arch "arm64"}}
-pgrep -q oahd || softwareupdate --install-rosetta --agree-to-license
-{{- end}}

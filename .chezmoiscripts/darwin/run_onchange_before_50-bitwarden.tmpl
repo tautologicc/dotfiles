@@ -1,0 +1,8 @@
+{{$binPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew/bin" "/usr/local/bin" -}}
+{{if joinPath $binPath "bw" | isExecutable | not -}}
+#!/bin/sh
+set -eux
+{{- $brew := joinPath $binPath "brew"}}
+eval "$({{$brew}} shellenv)"
+HOMEBREW_NO_ENV_HINTS=1 brew install bitwarden-cli --quiet
+{{- end}}

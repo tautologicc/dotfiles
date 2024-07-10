@@ -1,4 +1,0 @@
-{{- if joinPath .chezmoi.homeDir ".Brewfile" | stat | not}}
-{{- 	$brewFile := joinPath .chezmoi.sourceDir "dot_Brewfile" | printf "--file=%q"}}
-{{- 	includeTemplate "brew-bundle.tmpl" $brewFile}}
-{{- end}}
