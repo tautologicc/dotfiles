@@ -19,6 +19,7 @@ darwin:
       AppleEnableMenuBarTransparency: false
       AppleEnableMouseSwipeNavigateWithScrolls: false
       AppleHighlightColor: "0.212312 0.591682 0.908789"
+      AppleInterfaceStyleSwitchesAutomatically: true
       AppleKeyboardUIMode: 3 # Full keyboard access for all controls.
       AppleLanguages:
         - en-US
@@ -28,6 +29,7 @@ darwin:
       AppleMetricUnits: true
       AppleMiniaturizeOnDoubleClick: true
       ApplePressAndHoldEnabled: false
+      AppleReduceDesktopTinting: true
       AppleShowAllExtensions: true
       AppleShowAllFiles: true
       AppleShowScrollBars: Always
