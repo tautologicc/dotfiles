@@ -5,6 +5,6 @@ set -eux
 {{if isExecutable $brew | not -}}
 {{	$brew = "/opt/homebrew/bin/brew" -}}
 {{end -}}
-command -v brew >/dev/null || eval "$({{$brew}} shellenv)"
+eval "$({{$brew}} shellenv)"
 HOMEBREW_NO_ENV_HINTS=1 brew bundle --no-lock --quiet {{.}}
 mas upgrade
