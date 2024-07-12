@@ -20,6 +20,7 @@ darwin:
       AppleEnableMouseSwipeNavigateWithScrolls: false
       AppleHighlightColor: "0.212312 0.591682 0.908789"
       AppleInterfaceStyle: Dark
+      AppleICUForce24HourTime: true
       AppleKeyboardUIMode: 3 # Full keyboard access for all controls.
       AppleLanguages:
         - en-US
@@ -137,8 +138,9 @@ darwin:
     com.apple.helpviewer:
       DevMode: true
     com.apple.menuextra.clock:
-      DateFormat: '"EEE d MMM HH:mm"'
-      FlashDateSeparators: false
+      DateFormat: EEE d MMM HH:mm
+      ShowDate: true
+      ShowDayOfWeek: true
     com.apple.print.PrintingPrefs:
       Quit When Finished: true
     com.apple.screencapture:
