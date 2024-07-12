@@ -1,0 +1,6 @@
+{{$brewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
+{{if joinPath $brewPath "bin/brew" | isExecutable | not -}}
+#!/bin/sh
+set -eux
+curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh | bash
+{{- end}}

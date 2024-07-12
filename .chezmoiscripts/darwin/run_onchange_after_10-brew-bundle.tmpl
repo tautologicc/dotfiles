@@ -1,9 +1,0 @@
-#!/bin/sh
-set -eux
-{{$brew := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew/bin/brew" "/usr/local/bin/brew"}}
-eval "$({{$brew}} shellenv)"
-
-# {{include "dot_Brewfile" | cat (now | date "02 January 2006") | sha256sum}}
-HOMEBREW_NO_ENV_HINTS=1 brew bundle --global --no-lock --quiet
-
-mas upgrade
