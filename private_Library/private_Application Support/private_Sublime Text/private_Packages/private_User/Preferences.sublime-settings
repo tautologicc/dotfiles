@@ -5,7 +5,7 @@
 	"default_encoding": "UTF-8",
 	"default_line_encoding": "unix",
 	"draw_centered": true,
-	"draw_white_space": ["isolated_mixed", "leading_mixed", "trailing"],
+	"draw_white_space": ["isolated_mixed", "leading_mixed", "selected", "trailing"],
 	"ignored_packages":
 	[
 		"Vintage",
