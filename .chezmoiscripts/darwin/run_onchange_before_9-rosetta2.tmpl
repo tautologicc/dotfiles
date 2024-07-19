@@ -1,5 +1,0 @@
-{{if and (eq .chezmoi.arch "arm64") (output "pgrep" "oahd" | empty) -}}
-#!/bin/sh
-set -eux
-softwareupdate --install-rosetta --agree-to-license
-{{- end}}

@@ -1,5 +1,5 @@
 {{$cfg := "/etc/pam.d/sudo" -}}
-{{if and (output "grep" "pam_tid.so" $cfg | empty) (output "head" "-n1" $cfg | eq "# sudo: auth account password session") -}}
+{{if and (output "sh" "-c" "grep pam_tid.so $1 || true" "" $cfg | empty) (output "head" "-n1" $cfg | eq "# sudo: auth account password session") -}}
 {{	range $i, $lib := glob "/usr/lib/pam/pam_tid.so*" -}}
 {{		$cfg = quote $cfg -}}
 #!/bin/sh

@@ -12,7 +12,7 @@ sudo nvram
 {{- range $domain, $keys := .darwin.defaults}}
 {{- 	$defaults := hasPrefix "/" $domain | ternary "sudo defaults" "defaults" }}
 
-{{$defaults}} delete {{quote $domain}}
+{{$defaults}} delete {{quote $domain}} 2>/dev/null || true
 {{- 	range $key, $val := $keys}}
 {{- 		$type := kindOf $val | trimSuffix "64"}}
 {{- 		if eq $type "slice"}}

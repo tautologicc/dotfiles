@@ -16,10 +16,10 @@ darwin:
       AdminHostInfo: HostName
     NSGlobalDomain:
       AppleActionOnDoubleClick: Maximize
+      AppleAquaColorVariant: 1
       AppleEnableMenuBarTransparency: false
       AppleEnableMouseSwipeNavigateWithScrolls: false
-      AppleHighlightColor: "0.212312 0.591682 0.908789"
-      AppleInterfaceStyle: Dark
+      AppleInterfaceStyleSwitchesAutomatically: true
       AppleICUForce24HourTime: true
       AppleKeyboardUIMode: 3 # Full keyboard access for all controls.
       AppleLanguages:

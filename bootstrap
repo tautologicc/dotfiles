@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+
+bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+brew install bitwarden-cli chezmoi
+
+export BW_SESSION="$(bw unlock --raw || bw login --raw)"
+
+chezmoi init --apply https://github.com/tautologicc/dotfiles
+chezmoi git remote set-url origin git@github.com:tautologicc/dotfiles
+
+read -p "reboot now? [y/n]: " yn
+case "$yn" in
+	[Yy]*) sudo reboot ;;
+esac
