@@ -1,0 +1,11 @@
+#!/bin/sh
+# yesno [PROMPT] - ask a yes-no question
+while
+	printf "%s [y/n]: " "${*:-yes or no?}"
+	read ans
+do
+	case "$ans" in
+		[Yy]*) exit 0 ;;
+		[Nn]*) exit 1 ;;
+	esac
+done
