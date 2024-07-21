@@ -8,7 +8,9 @@ brew analytics off
 
 brew install --quiet age chezmoi pinentry-mac rbw
 
-printf 'bw email? '
+chezmoi execute-template "$(curl -fsSL https://github.com/tautologicc/dotfiles/raw/HEAD/)"
+
+printf 'bitwarden email? '
 read bw_email
 rbw config set email "$bw_email"
 rbw config set pinentry pinentry-mac
