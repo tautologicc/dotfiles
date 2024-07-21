@@ -1,5 +1,7 @@
 #!/bin/sh -eu
 
+# TODO(ttlgcc): Port to Linux.
+
 export HOMEBREW_NO_ANALYTICS=1
 
 bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
@@ -7,8 +9,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew analytics off
 
 brew install --quiet age chezmoi pinentry-mac rbw
-
-chezmoi execute-template "$(curl -fsSL https://github.com/tautologicc/dotfiles/raw/HEAD/)"
 
 printf 'bitwarden email? '
 read bw_email

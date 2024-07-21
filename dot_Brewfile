@@ -1,7 +1,6 @@
 brew "age"
 brew "chezmoi"
 brew "jq"
-brew "llvm"
 brew "mas"
 brew "oil"
 brew "pinentry-mac"
