@@ -1,0 +1,11 @@
+{
+	"extensions":
+	[
+		"sh",
+		".profile",
+		"bashrc",
+		"zsh",
+		"bash",
+		"ash"
+	]
+}
