@@ -1,3 +1,7 @@
 {
-	"system_binary": "/opt/homebrew/opt/llvm/bin/clangd",
+	"binary": "auto",
+	"initializationOptions": {
+		"clangd.malloc-trim": true,
+		"clangd.enable-config": true,
+	},
 }

@@ -1,10 +1,11 @@
 brew "age"
-brew "bitwarden-cli"
 brew "chezmoi"
 brew "jq"
 brew "llvm"
 brew "mas"
 brew "oil"
+brew "pinentry-mac"
+brew "rbw", conflicts_with: ["bitwarden-cli"]
 brew "tree"
 
 cask "ableton-live-suite@11"

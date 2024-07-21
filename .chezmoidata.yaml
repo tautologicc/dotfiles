@@ -156,7 +156,7 @@ darwin:
     com.apple.systemsound:
       com.apple.sound.uiaudio.enabled: false
     com.apple.universalaccess:
-      HIDScrollZoomModifierMask: 262144 # TODO(fmrsn): Explain what this mask means.
+      HIDScrollZoomModifierMask: 262144 # TODO(ttlgcc): Explain what this mask means.
       closeViewPressOnReleaseOff: true
       closeViewScrollWheelToggle: true
       closeViewSmoothImages: false

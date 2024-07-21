@@ -1,7 +1,7 @@
 #!/bin/sh
 # yesno [PROMPT] - ask a yes-no question
 while
-	printf "%s [y/n]: " "${*:-yes or no?}"
+	printf "%s [y/n]: " "${*:-yes or no}?"
 	read ans
 do
 	case "$ans" in
