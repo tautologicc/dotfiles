@@ -1,7 +1,7 @@
 {{- $name := promptStringOnce . "my.name" "name" "F. Emerson" -}}
 {{- $email := promptStringOnce . "my.email" "email" "t@utologi.cc" -}}
 {{- $username := promptStringOnce . "my.username" "username" "tautologicc" -}}
-{{- $hostname := promptStringOnce . "my.hostname" "hostname" .chezmoi.hostname -}}   
+{{- $hostname := promptStringOnce . "my.hostname" "hostname" .chezmoi.hostname -}}
 
 mask: 0o22
 data:

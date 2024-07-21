@@ -4,10 +4,7 @@ set -eux
 osascript -e 'tell application "System Preferences" to quit'
 
 sudo nvram
-{{- range $key, $val := .darwin.nvram}}
-{{- 	" "}}
-{{- 	list $key $val | join "=" | quote}}
-{{- end}}
+{{- range $key, $val := .darwin.nvram}} {{quote $key}}={{quote $val}}{{end}}
 
 {{- range $domain, $keys := .darwin.defaults}}
 {{- 	$defaults := hasPrefix "/" $domain | ternary "sudo defaults" "defaults" }}
@@ -26,7 +23,4 @@ sudo nvram
 {{- end}}
 
 killall
-{{- range .darwin.killall}}
-{{- 	" "}}
-{{- 	quote .}}
-{{- end}}
+{{- range .darwin.killall}} {{quote .}}{{end}}
