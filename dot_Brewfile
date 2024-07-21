@@ -1,3 +1,4 @@
+brew "age"
 brew "bitwarden-cli"
 brew "chezmoi"
 brew "jq"
