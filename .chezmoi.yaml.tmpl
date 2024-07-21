@@ -1,15 +1,23 @@
-{{- $name := promptStringOnce . "my.name" "name" "F. Emerson" -}}
-{{- $email := promptStringOnce . "my.email" "email" "t@utologi.cc" -}}
-{{- $username := promptStringOnce . "my.username" "username" "tautologicc" -}}
-{{- $hostname := promptStringOnce . "my.hostname" "hostname" .chezmoi.hostname -}}
+{{$name := promptStringOnce . "my.name" "name" "F. Emerson" -}}
+{{$email := promptStringOnce . "my.email" "email" "t@utologi.cc" -}}
+{{$username := promptStringOnce . "my.username" "username" "tautologicc" -}}
+{{$hostname := promptStringOnce . "my.hostname" "hostname" .chezmoi.hostname -}}
 
 mask: 0o22
+
 data:
   my:
     email: {{quote $email}}
     hostname: {{quote $hostname}}
     name: {{quote $name}}
     username: {{quote $username}}
+
+encryption: age
+age:
+  {{$keyFile := joinPath .chezmoi.homeDir ".config" "age" "dotfiles.key" -}}
+  identity: {{quote $keyFile}}
+  recipient: {{output "age-keygen" "-y" $keyFile | trim | quote}}
+
 git:
   autoCommit: true
   autoPush: true
