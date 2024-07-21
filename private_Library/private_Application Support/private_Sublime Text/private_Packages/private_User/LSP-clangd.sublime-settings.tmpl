@@ -1,8 +1,5 @@
-{{$basePath := "/usr/bin" -}}
-{{if eq .chezmoi.os "darwin" -}}
-{{	$brewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
-{{	$basePath = joinPath $brewPath "opt/llvm/bin" -}}
-{{end -}}
+{{$brewPath := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
+{{$clangd := joinPath $brewPath "opt/llvm/bin/clangd" -}}
 {
-	"system_binary": {{joinPath $basePath "clangd" | quote}},
+	"system_binary": {{quote $clangd}},
 }
