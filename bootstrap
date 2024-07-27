@@ -28,7 +28,7 @@ head -n1 | xargs -- rbw config set email
 rbw register
 rbw login
 
-chezmoi init --apply https://github.com/tautologicc/dotfiles
-chezmoi git remote set-url origin git@github.com:tautologicc/dotfiles
+chezmoi init --apply tautologicc
+chezmoi git config url."git@github.com:".insteadOf "https://github.com/"
 
 yesno 'reboot now' && sudo reboot || :
