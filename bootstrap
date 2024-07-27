@@ -3,17 +3,14 @@
 # TODO(ttlgcc): Port to Linux.
 
 export HOMEBREW_NO_ANALYTICS=1
-
 bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 brew analytics off
 
-brew install --quiet age chezmoi pinentry-mac rbw
+brew install --quiet age chezmoi rbw
 
 printf 'bitwarden email? '
-read bw_email
-rbw config set email "$bw_email"
-rbw config set pinentry pinentry-mac
+head -n1 | xargs -- rbw config set email
 rbw register
 rbw login
 

@@ -1,0 +1,7 @@
+{{if lookPath "brew" | not -}}
+#!/bin/sh
+export HOMEBREW_NO_ANALYTICS=1
+bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew analytics off
+{{- end}}

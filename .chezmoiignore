@@ -1,6 +1,7 @@
 README*
 TODO*
 bootstrap
+init
 
 .chezmoiscripts/*
 !.chezmoiscripts/{{.chezmoi.os}}/*

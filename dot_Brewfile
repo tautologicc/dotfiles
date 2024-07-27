@@ -29,4 +29,5 @@ cask "tev"
 cask "zoom" # @work
 
 mas "Bitwarden", id: 1352778147
+mas "Pinstachio for Pinboard", id: 1535386074
 mas "The Unarchiver", id: 425424353

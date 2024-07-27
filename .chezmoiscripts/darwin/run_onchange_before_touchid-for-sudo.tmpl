@@ -2,14 +2,14 @@
 {{if and (contains "pam_tid.so" $cfg | not) (hasPrefix "# sudo: auth account password session" $cfg) -}}
 {{	range $i, $lib := glob "/usr/lib/pam/pam_tid.so*" -}}
 #!/bin/sh -eux
-sudo chmod u+w /etc/pam.d/sudo
-sudo ed -s /etc/pam.d/sudo <<"EOF"
+sudo chmod u+w {{$cfg}}
+sudo ed -s {{$cfg}} <<"EOF"
 1a
 auth       sufficient     pam_tid.so
 .
 wq
 EOF
-sudo chmod u-w /etc/pam.d/sudo
+sudo chmod u-w {{$cfg}}
 {{- 		break}}
 {{- 	end}}
 {{- end}}
