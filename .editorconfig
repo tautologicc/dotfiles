@@ -14,6 +14,6 @@ end_of_line = crlf
 [*.md]
 trim_trailing_whitespace = false
 
-[*.jso{n,n.tmpl},*.yam{l,l.tmpl}]
+[*.{json,json.tmpl,yaml,yaml.tmpl}]
 indent_size = 2
 indent_style = space

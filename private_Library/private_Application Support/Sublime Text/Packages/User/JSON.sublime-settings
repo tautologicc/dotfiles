@@ -8,6 +8,7 @@
 		".babelrc",
 		".csslintrc",
 		".stylelintrc",
-		".jscsrc"
+		".jscsrc",
+		"json.tmpl"
 	]
 }

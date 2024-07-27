@@ -4,6 +4,7 @@
 		"YAML-tmLanguage",
 		".gemrc",
 		"yml",
-		"yml.dist"
+		"yml.dist",
+		"yaml.tmpl"
 	]
 }
