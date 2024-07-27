@@ -1,13 +1,13 @@
 #!/bin/sh
 set -eu
 
-# TODO(ttlgcc): Port to Linux.
-
 # Bootstrapping tools:
 #
 # - age
 # - chezmoi
 # - rbw
+#
+# TODO(ttlgcc): Port to Linux.
 
 case "$(uname -s)" in
 	Darwin)
@@ -18,7 +18,7 @@ case "$(uname -s)" in
 		brew install --quiet age chezmoi rbw
 		;;
 	*)
-		echo 'OS not supported yet'
+		printf 'OS not supported yet\n'
 		exit 1
 		;;
 esac
@@ -29,6 +29,6 @@ rbw register
 rbw login
 
 chezmoi init --apply tautologicc
-chezmoi git config url."git@github.com:".insteadOf "https://github.com/"
+chezmoi git config url.'git@github.com:'.insteadOf 'https://github.com/'
 
 yesno 'reboot now' && sudo reboot || :
