@@ -1,8 +1,9 @@
 {{$name := promptStringOnce . "my.name" "name" "F. Emerson" -}}
 {{$email := promptStringOnce . "my.email" "email address" "t@utologi.cc" -}}
-{{$bwEmail := promptStringOnce . "my.bwEmail" "bitwarden email" $email}}
 {{$username := promptStringOnce . "my.username" "username" "tautologicc" -}}
 {{$hostname := promptStringOnce . "my.hostname" "hostname" .chezmoi.hostname -}}
+
+{{$bwEmail := output "rbw" "config" "show" | jq ".email" -}}
 
 mask: 0o22
 
