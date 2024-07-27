@@ -3,7 +3,7 @@
 {{$username := promptStringOnce . "my.username" "username" "tautologicc" -}}
 {{$hostname := promptStringOnce . "my.hostname" "hostname" .chezmoi.hostname -}}
 
-{{$bwEmail := output "rbw" "config" "show" | jq ".email" -}}
+{{$bwEmail := output "rbw" "config" "show" | fromJson | jq ".email" | first -}}
 
 mask: 0o22
 
