@@ -12,8 +12,7 @@ set -eux
 case "$(uname -s)" in
 	Darwin)
 		export HOMEBREW_NO_ANALYTICS=1
-		export NONINTERACTIVE=1
-		bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
+		NONINTERACTIVE=1 bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
 		eval "$(/opt/homebrew/bin/brew shellenv)"
 		brew analytics off
 		brew install --quiet age chezmoi rbw
