@@ -1,12 +1,1 @@
-{
-  "email": "{{.my.bwEmail}}",
-  "sso_id": null,
-  "base_url": null,
-  "identity_url": null,
-  "ui_url": null,
-  "notifications_url": null,
-  "lock_timeout": 3600,
-  "sync_interval": 3600,
-  "pinentry": "{{eq .chezmoi.os "darwin" | ternary "pinentry-mac" "pinentry"}}",
-  "client_cert_path": null
-}
+{"email":"{{.my.bwEmail}}","sso_id":null,"base_url":null,"identity_url":null,"ui_url":null,"notifications_url":null,"lock_timeout":3600,"sync_interval":3600,"pinentry":{{eq .chezmoi.os "darwin" | ternary "pinentry-mac" "pinentry" | quote}},"client_cert_path":null}
