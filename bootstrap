@@ -28,6 +28,10 @@ head -n1 | xargs -- rbw config set email
 rbw register
 rbw login
 
+mkdir -p ~/.config/age
+rbw get '~/.config/age/dotfiles.key' >~/.config/age/dotfiles.key
+chmod 400 ~/.config/age/dotfiles.key
+
 chezmoi init --apply tautologicc
 chezmoi git config url.'git@github.com:'.insteadOf 'https://github.com/'
 
