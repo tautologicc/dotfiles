@@ -6,14 +6,12 @@
 	"default_line_encoding": "unix",
 	"draw_centered": true,
 	"draw_white_space": ["isolated_mixed", "leading_mixed", "selected", "trailing"],
-	"ignored_packages":
-	[
-		"Vintage",
-	],
+	"ignored_packages": [],
 	"index_files": true,
 	"light_color_scheme": "Alabaster.sublime-color-scheme",
 	"light_theme": "Default.sublime-theme",
 	"lsp_format_on_save": true,
-	"neovintageous_build_version": 13200,
 	"theme": "auto",
+	"vintage_ctrl_keys": true,
+	"vintage_start_in_command_mode": true,
 }
