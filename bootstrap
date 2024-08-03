@@ -6,7 +6,7 @@ set -eu
 # - age
 # - chezmoi
 # - rbw
-#
+
 # TODO(ttlgcc): Port to Linux.
 
 case "$(uname -s)" in
@@ -24,7 +24,7 @@ case "$(uname -s)" in
 esac
 
 printf 'bitwarden email? '
-head -n1 | xargs -- rbw config set email
+head -n1 | xargs rbw config set email
 rbw register
 rbw login
 
