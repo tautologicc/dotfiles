@@ -5,3 +5,4 @@
 - macOS: set privacy permissions programatically
 
 - install kontroll once available via homebrew
+- think about calling "open" on installed programs so we can configure all of them
