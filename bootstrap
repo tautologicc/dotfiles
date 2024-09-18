@@ -13,7 +13,8 @@ case "$(uname -s)" in
 	Darwin)
 		export HOMEBREW_NO_ANALYTICS=1
 		bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
-		eval "$(/opt/homebrew/bin/brew shellenv)"
+		test $(uname -m) = arm64 && prefix=/opt/homebrew || prefix=/usr/local
+		eval "$($prefix/brew shellenv)"
 		brew analytics off
 		brew install --quiet age chezmoi rbw
 		;;
@@ -28,9 +29,14 @@ head -n1 | xargs rbw config set email
 rbw register
 rbw login
 
-mkdir -p ~/.config/age
-rbw get '~/.config/age/dotfiles.key' >~/.config/age/dotfiles.key
-chmod 400 ~/.config/age/dotfiles.key
+for key in .config/age/dotfiles.key .ssh/id_ed25519 .ssh/id_ed25519.pub
+do
+	mkdir -p ~/$(dirname $key)
+	rbw get '~'/$key >~/$key
+	chmod 400 ~/$key
+done
+
+ssh-add ~/.ssh/id_ed25519
 
 chezmoi init --apply tautologicc
 chezmoi git config url.'git@github.com:'.insteadOf 'https://github.com/'
