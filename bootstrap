@@ -13,7 +13,7 @@ case "$(uname -s)" in
 	Darwin)
 		export HOMEBREW_NO_ANALYTICS=1
 		bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
-		test $(uname -m) = arm64 && brew_prefix=/opt/homebrew || brew_prefix=/usr/local
+		test "$(uname -m)" = arm64 && brew_prefix=/opt/homebrew || brew_prefix=/usr/local
 		eval "$($brew_prefix/bin/brew shellenv)"
 		brew analytics off
 		brew install --quiet age chezmoi rbw
