@@ -1,0 +1,4 @@
+{{if eq .chezmoi.os "darwin" -}}
+{{-	$brewPrefix := eq .chezmoi.arch "arm64" | ternary "/opt/homebrew" "/usr/local" -}}
+pinetry-program {{$brewPrefix}}/opt/pinentry-touchid/bin/pinentry-touchid
+{{- end}}

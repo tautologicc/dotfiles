@@ -1,12 +1,9 @@
-tap "jorgelbg/tap", "git@github.com:jorgelbg/tap" # pinentry-touchid
-
 brew "age"
 brew "chezmoi"
 brew "jq"
 brew "mas"
 #brew "oil"
 brew "pinentry-mac"
-brew "pinentry-touchid"
 brew "rbw", conflicts_with: ["bitwarden-cli"]
 brew "tree"
 
@@ -23,7 +20,6 @@ cask "little-snitch"
 cask "micro-snitch"
 cask "logseq"
 cask "orion"
-cask "parsec"
 cask "stremio"
 cask "sublime-merge"
 cask "sublime-text"
@@ -32,3 +28,7 @@ cask "tev"
 mas "Bitwarden", id: 1352778147
 mas "Pinstachio for Pinboard", id: 1535386074
 mas "The Unarchiver", id: 425424353
+
+
+tap "jorgelbg/tap", "https://github.com/jorgelbg/homebrew-tap"
+brew "pinentry-touchid"
