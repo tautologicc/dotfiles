@@ -1,4 +1,5 @@
-{{if eq .chezmoi.os "darwin" -}}
+{{$tev := "/Applications/tev.app/Contents/MacOS/tev" -}}
+{{- if isExecutable $tev -}}
 #!/bin/sh
-exec /Applications/tev.app/Contents/MacOS/tev "$@"
+exec {{$tev}} "$@"
 {{- end}}
