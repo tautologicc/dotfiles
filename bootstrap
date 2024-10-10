@@ -1,21 +1,22 @@
 #!/bin/sh
 set -eu
 
-# Bootstrapping tools:
+# TODO(ttlgcc): Port to Linux.
+
+# NOTE(ttlgcc): Install bootstrapping tools:
 #
 # - age
 # - chezmoi
 # - rbw
-
-# TODO(ttlgcc): Port to Linux.
-
+#
 case "$(uname -s)" in
 	Darwin)
-		export HOMEBREW_NO_ANALYTICS=1
-		bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
-		test "$(uname -m)" = arm64 && brew_prefix=/opt/homebrew || brew_prefix=/usr/local
-		eval "$($brew_prefix/bin/brew shellenv)"
-		brew analytics off
+		command -v brew 2>/dev/null || {
+			export HOMEBREW_NO_ANALYTICS=1
+			bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
+			eval "$(/opt/homebrew/bin/brew shellenv || /usr/local/bin/brew shellenv)"
+			brew analytics off
+		}
 		brew install --quiet age chezmoi rbw
 		;;
 	*)
@@ -24,21 +25,28 @@ case "$(uname -s)" in
 		;;
 esac
 
+# NOTE(ttlgcc): Log in to Bitwarden.
+#
 printf 'bitwarden email? '
 head -n1 | xargs rbw config set email
 rbw register
 rbw login
 
+# NOTE(ttlgcc): Import secrets.
+#
 for key in .config/age/dotfiles.key .ssh/id_ed25519 .ssh/id_ed25519.pub
 do
 	mkdir -p ~/$(dirname $key)
 	rbw get '~'/$key >~/$key
 	chmod 400 ~/$key
 done
+ssh-add
 
-ssh-add ~/.ssh/id_ed25519
-
+# NOTE(ttlgcc): Clone configuration files.
+#
 chezmoi init --apply tautologicc
 chezmoi git config url.'git@github.com:'.insteadOf 'https://github.com/'
 
+# NOTE(ttlgcc): Reboot machine.
+#
 yesno 'reboot now' && sudo reboot || :
