@@ -1,0 +1,8 @@
+{{if not (eq .chezmoi.hostname .my.hostname) -}}
+{{	$hostname := quote .my.hostname -}}
+#!/usr/bin/env sudo /bin/sh -eux
+scutil --set ComputerName {{$hostname}}
+scutil --set HostName {{$hostname}}
+scutil --set LocalHostName {{$hostname}}
+dscacheutil -flushcache
+{{- end}}

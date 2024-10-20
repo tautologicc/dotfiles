@@ -12,6 +12,23 @@ darwin:
   #   - https://mths.be/macos
   #   - https://github.com/joeyhoer/starter
   defaults:
+    /Library/Preferences/SystemConfiguration/com.apple.smb.server:
+
+      # Values:
+      #
+      # - 437: Latin (United States)
+      # - 737: Windows 95 Greek
+      # - 850: Latin 1 (Western European)
+      # - 852: Latin 2 (Eastern European)
+      # - 861: Icelandic
+      # - 866: Cyrillic (Russian)
+      # - 932: Japanese Shift-JIS
+      # - 936: Simplified Chinese
+      # - 949: Korean Hangul
+      # - 950: Traditional Chinese
+      DOSCodePage: 850
+      NetBIOSName: $(hostname)
+      ServerDescription: $(hostname)
     /Library/Preferences/com.apple.loginwindow:
       AdminHostInfo: HostName
       DisableConsoleAccess: true
@@ -81,7 +98,7 @@ darwin:
       com.apple.springing.enabled: true
       com.apple.swipescrolldirection: true
     com.apple.ActivityMonitor:
-      IconType: 0 # App's regular icon.
+      IconType: 0 # app's regular icon
       UpdatePeriod: 5
     com.apple.AppleMultitouchTrackpad:
       DragLock: false
@@ -103,7 +120,7 @@ darwin:
     com.apple.CrashReporter:
       DialogType: none
     com.apple.HIToolbox:
-      AppleFnUsageType: 2 # Show emoji & symbols modal.
+      AppleFnUsageType: 2 # show emoji & symbols modal
     com.apple.LaunchServices:
       LSQuarantine: false
     com.apple.MobileSMS:
@@ -120,8 +137,8 @@ darwin:
       FocusFollowsMouse: false
     com.apple.TextEdit:
       RichText: false
-      PlainTextEncoding: 4 # Read file using UTF-8 encoding.
-      PlainTextEncodingForWrite: 4 # Write file using UTF-8 encoding.
+      PlainTextEncoding: 4 # UTF-8
+      PlainTextEncodingForWrite: 4 # UTF-8
       SmartQuotes: false
     com.apple.TimeMachine:
       AutoBackup: true
@@ -186,12 +203,12 @@ darwin:
       _FXSortFoldersFirstOnDesktop: true
       CreateDesktop: true
       DisableAllAnimation: true
-      FXDefaultSearchScope: SCcf # Current folder.
+      FXDefaultSearchScope: SCcf # current folder
       FXEnableExtensionChangeWarning: false
       FXInfoPanesExpanded.General: true
       FXInfoPanesExpanded.OpenWith: true
       FXInfoPanesExpanded.Privileges: true
-      FXPreferredViewStyle: Nlsv # List view.
+      FXPreferredViewStyle: Nlsv # list view
       FXRemoveOldTrashItems: true
       NewWindowTarget: PfHm
       NewWindowTargetPath: file://$HOME/
@@ -240,7 +257,7 @@ darwin:
       closeViewScrollWheelToggle: true
       closeViewSmoothImages: false
       closeViewZoomFollowsFocus: true
-      closeViewZoomMode: 1 # Picture-in-picture.
+      closeViewZoomMode: 1 # picture-in-picture
       increaseContrast: false
       reduceTransparency: true
       showWindowTitlebarIcons: false

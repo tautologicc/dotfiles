@@ -1,0 +1,2 @@
+#!/bin/sh -eux
+killall{{range .darwin.killall}} {{quote .}}{{end}}

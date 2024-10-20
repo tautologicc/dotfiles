@@ -1,0 +1,40 @@
+{{$emit := list -}}
+{{range $domain, $keys := .darwin.defaults -}}
+{{	range $key, $val := $keys -}}
+{{		$type := kindOf $val | trimSuffix "64" -}}
+{{		if eq $type "slice" -}}
+{{			$type = "array" -}}
+{{		else -}}
+{{			$val = list $val -}}
+{{		end -}}
+{{		$valsInReg := output "sh" "-c" `defaults read "$1" "$2" 2>/dev/null || :` "" $domain $key | trimPrefix "(\n" | trimSuffix ")\n" | trim | splitList "\n" -}}
+{{		range $i, $valInReg := $valsInReg -}}
+{{			$valInReg = $valInReg | trim | trimPrefix `"` | trimSuffix "," | trimSuffix `"` -}}
+{{			$valToSave := "" -}}
+{{			if lt $i (len $val) -}}
+{{				$v := index $val $i -}}
+{{				if kindIs "bool" $v -}}
+{{					$v = ternary 1 0 $v -}}
+{{				else if kindIs "string" $v -}}
+{{					$v = quote $v | cat "echo" | output "sh" "-c" | trim | trimPrefix `"` | trimSuffix "," | trimSuffix `"` -}}
+{{				end -}}
+{{				$valToSave = toString $v -}}
+{{			end -}}
+{{			if not (eq $valInReg $valToSave) -}}
+{{				$emit = append $emit (dict "domain" $domain "key" $key "type" $type "val" $val) -}}
+{{				break -}}
+{{			end -}}
+{{		end -}}
+{{	end -}}
+{{end -}}
+{{if not (empty $emit) -}}
+#!/bin/sh -eux
+osascript -e 'tell application "System Preferences" to quit'
+{{end -}}
+{{range $emit -}}
+{{ 	$domain := get . "domain" -}}
+{{	$key := get . "key" -}}
+{{	$type := get . "type" -}}
+{{	$val := get . "val" -}}
+{{if hasPrefix "/" $domain}}sudo {{end}}defaults write {{quote $domain}} {{quote $key}} -{{$type}}{{range $val}} {{quote .}}{{end}}
+{{end -}}

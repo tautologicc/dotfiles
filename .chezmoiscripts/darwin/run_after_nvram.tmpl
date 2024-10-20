@@ -1,0 +1,12 @@
+{{$nvram := dict -}}
+{{range $key, $val := .darwin.nvram -}}
+{{	if (output "nvram" $key | splitn "\t" 2)._1 | trim | eq $val | not -}}
+{{		$_ := set $nvram $key $val -}}
+{{	end -}}
+{{end -}}
+{{if not (empty $nvram) -}}
+#!/usr/bin/env sudo /bin/sh -eux
+{{	range $key, $val := $nvram -}}
+nvram {{quote $key}}={{quote $val}}
+{{- 	end}}
+{{- end	}}

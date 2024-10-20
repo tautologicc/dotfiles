@@ -1,0 +1,13 @@
+{{$cfgHeader := "# sudo: auth account password session\n" -}}
+{{$cfgToInsert := "auth       sufficient     pam_tid.so\n" -}}
+{{$cfgCurrent := include "/etc/pam.d/sudo" -}}
+{{if and (not (contains $cfgToInsert $cfgCurrent)) (hasPrefix $cfgHeader $cfgCurrent) -}}
+{{	$cfgCurrent = trimPrefix $cfgHeader $cfgCurrent -}}
+{{	if glob "/usr/lib/pam/pam_tid.so*" | empty | not -}}
+#!/usr/bin/env sudo /bin/sh -eux
+chmod u+w /etc/pam.d/sudo
+cat >/etc/pam.d/sudo <<"EOF"
+{{$cfgHeader}}{{$cfgToInsert}}{{trimPrefix $cfgHeader $cfgCurrent}}EOF
+chmod u-w /etc/pam.d/sudo
+{{- 	end}}
+{{- end}}
